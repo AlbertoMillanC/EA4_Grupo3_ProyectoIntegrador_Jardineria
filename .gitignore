@@ -1,0 +1,8 @@
+# Archivos temporales y compilados
+__pycache__/
+*.pyc
+*.tmp
+*.log
+~$*.docx
+.DS_Store
+Thumbs.db
