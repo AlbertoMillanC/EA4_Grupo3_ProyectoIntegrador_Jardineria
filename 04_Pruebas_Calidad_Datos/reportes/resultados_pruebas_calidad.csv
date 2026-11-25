@@ -1,0 +1,23 @@
+id_prueba,dimension,descripcion,fallos,resultado
+DQ-01,Completitud,dim_producto sin nulos en llaves/nombre/categoria/precio,0,PASS
+DQ-02,Completitud,dim_cliente sin nulos en nombre/ciudad/pais/telefono,0,PASS
+DQ-03,Completitud,dim_empleado sin nulos en nombre/email/oficina,0,PASS
+DQ-04,Completitud,fact_ventas sin nulos en llaves subrogadas ni metricas,0,PASS
+DQ-05,Unicidad,0 codigos de producto duplicados en dim_producto,0,PASS
+DQ-06,Unicidad,"0 clientes duplicados por (nombre, telefono, ciudad) en dim_cliente (Lasas S.A. unificado)",0,PASS
+DQ-07,Unicidad,"0 lineas duplicadas por (id_pedido_dd, sk_producto) en fact_ventas (ID 317 depurado)",0,PASS
+DQ-08,Unicidad,0 fechas duplicadas en dim_tiempo,0,PASS
+DQ-09,Integridad Referencial,0 sk_producto o sk_cliente huerfanos en fact_ventas,0,PASS
+DQ-10,Integridad Referencial,0 sk_empleado huerfanos en fact_ventas,0,PASS
+DQ-11,Integridad Referencial,0 llaves de tiempo huerfanas en fact_ventas (pedido/esperada/entrega),0,PASS
+DQ-12,Integridad Referencial,"0 llaves huerfanas en fact_pagos (cliente, empleado, tiempo)",0,PASS
+DQ-13,Exactitud y Consistencia,0 ventas en estado Rechazado dentro de fact_ventas,0,PASS
+DQ-14,Exactitud y Consistencia,0 descuadres entre importe_venta_linea y cantidad * precio_unitario_historico,0,PASS
+DQ-15,Exactitud y Consistencia,0 descuadres en utilidad_bruta_linea = importe_venta_linea - costo_estimado_linea,0,PASS
+DQ-16,Exactitud y Consistencia,0 cantidades o precios unitarios historicos <= 0 en fact_ventas,0,PASS
+DQ-17,Exactitud y Consistencia,0 fechas de entrega efectivas anteriores a fecha_pedido (excluyendo centinela 19000101),0,PASS
+DQ-18,Validez y Estandarizacion,0 paises sin homologar al espanol en dim_cliente y dim_empleado,0,PASS
+DQ-19,Validez y Estandarizacion,0 espacios laterales sin limpiar en nombre_producto y nombre_cliente,0,PASS
+DQ-20,Validez y Estandarizacion,0 textos corruptos o mojibake UTF-8 residual en dimensiones,0,PASS
+DQ-21,Conciliacion e Idempotencia,staging_jardineria_ea3 mantiene exactamente 816 filas totales tras recarga TRUNCATE,0,PASS
+DQ-22,Conciliacion e Idempotencia,Conciliacion exacta fact_ventas = 253 (318 - 64 rechazadas - 1 duplicada) y fact_pagos = 26,0,PASS
